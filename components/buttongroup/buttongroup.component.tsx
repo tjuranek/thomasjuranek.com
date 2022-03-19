@@ -1,15 +1,16 @@
 import styles from './buttongroup.module.css';
 
 export function ButtonGroup(props: Props) {
-    const { children } = props;
+    const { additionalClassNames, children } = props;
 
     return (
-        <div className={styles.buttonGroup}>
+        <div className={`${styles.buttonGroup} ${additionalClassNames}`}>
             {children}
         </div>   
     );
 }
 
 interface Props {
+    additionalClassNames?: string; 
     children: React.ReactNode;
 }
