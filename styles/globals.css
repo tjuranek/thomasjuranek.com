@@ -18,9 +18,16 @@
 
 /* styles */
 body {
+    color: var(--white);
     font-family: Epilogue;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family: EpilogueBold;
+    font-size: 18px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: EpilogueBold;
+    letter-spacing: 0.0115em;
+}
+
+p {
+    line-height: 1.5em;
+}
