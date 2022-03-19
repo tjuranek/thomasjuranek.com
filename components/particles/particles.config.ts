@@ -1,13 +1,10 @@
-import React from 'react';
-import TsParticles from 'react-tsparticles';
-
-const options = {
+export const options = {
     background: {
         color: {
             value: "#121212",
         },
     },
-    fpsLimit: 120,
+    fpsLimit: 60,
     interactivity: {
         events: {
             onHover: {
@@ -42,7 +39,7 @@ const options = {
                 enable: true,
                 area: 800,
             },
-            value: 100,
+            value: 50,
         },
         opacity: {
             value: 0.5,
@@ -56,12 +53,3 @@ const options = {
         },
     },
 };
-
-export function Particles() {
-    return (
-        <TsParticles options={options} />
-    );
-}
-
-
-
