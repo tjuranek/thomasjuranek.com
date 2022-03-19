@@ -7,3 +7,18 @@
     font-weight: bold;
     padding: 1rem 2rem;
 }
+
+@media only screen and (max-width: 768px) {
+    .button {
+        font-size: 1.33rem;
+        padding: .75rem 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .button {
+        font-size: 1rem;
+        padding: .5rem 1rem;
+    }
+}
+
