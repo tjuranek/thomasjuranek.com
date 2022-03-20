@@ -8,9 +8,7 @@ import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
     return (
-        <>
-            <Particles />
-
+        <Particles>
             <section className={styles.hero}>
                 <article className={styles.titlebar}>
                     <Typography additionalClassNames={styles.name} variant="h1">Thomas Juranek</Typography>
@@ -45,7 +43,19 @@ const Home: NextPage = () => {
                     </ButtonGroup>
                 </article>
             </section>
-        </>
+
+            <section className={styles.content} id="projects">
+                <article>
+                    <Typography additionalClassNames={styles.sectionHeader} variant="h2">
+                        Projects
+                    </Typography>
+
+                    <Typography additionalClassNames={styles.sectionDescription} variant="p">
+                        I’m always working on some project to keep improving as a developer. Below are a couple of my recent favorites.
+                    </Typography>
+                </article>
+            </section>
+        </Particles>
     );
 }
 

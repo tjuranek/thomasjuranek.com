@@ -2,9 +2,6 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    position: absolute;
-    width: 100vw;
-    z-index: 1;
 }
 
 .titlebar {
@@ -45,6 +42,23 @@
 
 .buttons {
     margin-top: 2rem;
+}
+
+.content {
+    background-color: var(--black);
+    border: 1px solid white;
+    margin: 0 15%;
+    padding: 5rem 1rem;
+    width: 70%;
+}
+
+.sectionHeader {
+    font-size: 2.66rem;
+}
+
+.sectionDescription {
+    font-size: 1.33rem;
+    margin-top: 1rem;
 }
 
 @media only screen and (max-width: 768px) {
