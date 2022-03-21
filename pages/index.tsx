@@ -46,7 +46,7 @@ const Home: NextPage = () => {
                 </article>
             </section>
 
-            <section className={styles.projects} id="projects">
+            <section className={`${styles.projects} ${styles.content}`} id="projects">
                 <article>
                     <Typography additionalClassNames={styles.sectionHeader} variant="h2">
                         Projects
@@ -74,6 +74,26 @@ const Home: NextPage = () => {
                     paragraphTwo='Think of it as a program that continually looks at price data, determines if a coin is worth buying or selling, and then places that order automatically.'
                     buttonLabel='Coming Soon'
                 />
+            </section>
+
+            <section className={styles.contact} id='contact'>
+                <article className={styles.content}>
+                    <Typography additionalClassNames={styles.sectionHeader} variant="h2">
+                        Contact Me
+                    </Typography>
+
+                    <Typography additionalClassNames={styles.sectionDescription} variant="p">
+                        If you’re looking to hire, need a project build, or just want to connect please send me an email or reach out through social media!
+                    </Typography>
+
+                    <div className={styles.contactInformation}>
+                        <Typography additionalClassNames={styles.email} variant='p'>
+                            ✉️ hello@thomasjuranek.com
+                        </Typography>
+
+                        <SocialIcons />
+                    </div>
+                </article>
             </section>
         </Particles>
     );
