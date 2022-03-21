@@ -41,8 +41,8 @@ const Home: NextPage = () => {
                     </Typography>
 
                     <ButtonGroup additionalClassNames={styles.buttons}>
-                        <Button label='View Projects' />
-                        <Button label='Contact Me' />
+                        <Button label='View Projects' link='#projects'/>
+                        <Button label='Contact Me' link='#contact' />
                     </ButtonGroup>
                 </article>
             </section>

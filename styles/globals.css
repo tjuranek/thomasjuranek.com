@@ -20,6 +20,10 @@
 }
 
 /* styles */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     color: var(--white);
     font-family: Epilogue;
