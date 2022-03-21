@@ -58,9 +58,11 @@
 .sectionDescription {
     font-size: 1.33rem;
     margin-top: 1rem;
+    max-width: 80%;
 }
 
 .contact {
+    border-top: 2px solid var(--white);
     background-color: var(--black);
     padding: 5rem 0;
 }
@@ -99,6 +101,10 @@
         margin: 5rem 10%;
         width: 80%;
     }
+    
+    .sectionDescription {
+        max-width: 90%;
+    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -118,6 +124,10 @@
     .content {
         margin: 5rem 5%;
         width: 90%;
+    }
+
+    .sectionDescription {
+        max-width: 100%;
     }
 }
 

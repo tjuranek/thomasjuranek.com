@@ -1,16 +1,21 @@
 import styles from './button.module.css';
 
 export function Button(props: Props) {
-    const { additionalClassNames, label } = props;
+    const { additionalClassNames, label, link, openNewWindow } = props;
+
+    const target = openNewWindow ? '_blank' : '_self';
+    const classNames = `${styles.button} ${additionalClassNames}`;
 
     return (
-        <button className={`${styles.button} ${additionalClassNames}`}>
+        <a href={link} target={target} className={classNames}>
             {label}
-        </button>
+        </a>
     );
 };
 
 interface Props {
     additionalClassNames?: string;
     label: string;
+    link?: string;
+    openNewWindow?: boolean;
 }

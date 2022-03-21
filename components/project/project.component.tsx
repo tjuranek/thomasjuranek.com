@@ -9,36 +9,40 @@ export function Project(props: Props) {
     return (
         <article>
             <div className={styles.project}>
-                <div className={styles.imageContainer}>
-                    <Image alt={imageAlt} layout='fill' src={image} />
-                </div>
+                <Image alt={imageAlt} layout='responsive' src={image} />
 
-                <div>
-                    <Typography
-                        additionalClassNames={styles.name}
-                        variant='h3'
-                    >
-                        {title}
-                    </Typography>
+                <div className={styles.informationContainer}>
+                    <div>
+                        <Typography
+                            additionalClassNames={styles.name}
+                            variant='h3'
+                        >
+                            {title}
+                        </Typography>
 
-                    <Typography
-                        additionalClassNames={styles.description}
-                        variant='p'
-                    >
-                        {paragraphOne}
-                    </Typography>
+                        <Typography
+                            additionalClassNames={styles.description}
+                            variant='p'
+                        >
+                            {paragraphOne}
+                        </Typography>
 
-                    <Typography
-                        additionalClassNames={styles.description}
-                        variant='p'
-                    >
-                        {paragraphTwo}
-                    </Typography>
+                        <Typography
+                            additionalClassNames={styles.description}
+                            variant='p'
+                        >
+                            {paragraphTwo}
+                        </Typography>
 
-                    <Button 
-                        additionalClassNames={styles.button}
-                        label={buttonLabel}
-                    />
+                        {buttonLabel && buttonLink &&  (
+                            <Button 
+                                additionalClassNames={styles.button}
+                                label={buttonLabel}
+                                link={buttonLink}
+                                openNewWindow={true}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
                             
@@ -53,6 +57,6 @@ interface Props {
     title: string;
     paragraphOne: string;
     paragraphTwo?: string;
-    buttonLabel: string;
+    buttonLabel?: string;
     buttonLink?: string;
 }

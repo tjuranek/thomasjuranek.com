@@ -5,7 +5,8 @@ import { Particles } from '../components/particles';
 import {Project} from '../components/project';
 import { SocialIcons } from '../components/socialicons';
 import { Typography } from '../components/typography';
-import coinbasePic from '../images/coinbase.png';
+import lunaImg from '../images/luna.png';
+import raffertysImg from '../images/raffertys.png';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
@@ -58,21 +59,21 @@ const Home: NextPage = () => {
                 </article>
 
                 <Project 
-                    image={coinbasePic}
-                    imageAlt='some alt text'
+                    image={lunaImg}
+                    imageAlt='A logo for the Luna project'
                     title='Luna'
-                    paragraphOne='Luna is an in progress cryptocurrency trading bot that automates placing orders on an exchange.'
-                    paragraphTwo='Think of it as a program that continually looks at price data, determines if a coin is worth buying or selling, and then places that order automatically.'
-                    buttonLabel='Coming Soon'
+                    paragraphOne="Interested in crypto but don't have enough time to continually monitor prices and place orders? Luna is an algo trading bot built to trade on your terms without the constant babysitting."
+                    paragraphTwo="It started off as an intriguing side project, but now I see a potential SaaS opportunity. Luna is closed source for now but built on Node.js and React. I'm currently working through an algorithm backtesting feature but I plan to either open source it or create an alpha in Q2 of this year."
                 />
 
                 <Project 
-                    image={coinbasePic}
-                    imageAlt='some alt text'
-                    title='Luna'
-                    paragraphOne='Luna is an in progress cryptocurrency trading bot that automates placing orders on an exchange.'
-                    paragraphTwo='Think of it as a program that continually looks at price data, determines if a coin is worth buying or selling, and then places that order automatically.'
-                    buttonLabel='Coming Soon'
+                    image={raffertysImg}
+                    imageAlt='A logo for the Raffertys project'
+                    title='Raffertys'
+                    paragraphOne="Raffertys is a local pizza chain that hired me to design and build them a new website."
+                    paragraphTwo="After designing mockups in Figma, I built the site with Gatsby and React as a statically generated site. It uses a headless CMS to manage all of the page content and is hosted through Netlify - taking advantage of their serverless function and form submission features for accepting job applications."
+                    buttonLabel='View Site'
+                    buttonLink='https://raffertyspizza.com/'
                 />
             </section>
 
