@@ -1,5 +1,22 @@
 .icon {
-    font-size: 1.5rem;
+    color: var(--white);
+    font-size: 2rem;
+}
+
+.instagram:hover {
+    color: #DD2A7B;
+}
+
+.twitter:hover {
+    color: #00ACEE;
+}
+
+.linkedin:hover {
+    color: #0E76A8;
+}
+
+.github:hover {
+    color: #2DBA4E;
 }
 
 @media only screen and (max-width: 768px) {
