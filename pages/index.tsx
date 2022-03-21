@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
-import Image from 'next/image';
 import { Button } from '../components/button';
-import { ButtonGroup } from '../components/buttongroup/buttongroup.component';
+import { ButtonGroup } from '../components/buttongroup';
 import { Particles } from '../components/particles';
 import {Project} from '../components/project';
-import { SocialIcons } from '../components/socialicons/socialicons.component';
+import { SocialIcons } from '../components/socialicons';
 import { Typography } from '../components/typography';
 import coinbasePic from '../images/coinbase.png';
 import styles from '../styles/Home.module.css';
