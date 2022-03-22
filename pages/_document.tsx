@@ -12,14 +12,14 @@ export default function Document() {
 
                 <meta property="og:url" content="https://thomasjuranek.com"/><meta property="og:title" content="Thomas Juranek"/>
                 <meta property="og:description" content="Minnesota based web developer. Passionate about efficiently building lovable products. Enjoys getting outdoors and to the gym."/>
-                <meta property="og:image" content="http://localhost:3000/OG-Index-V1.png"/>
+                <meta property="og:image" content="http://thomasjuranek.com/OG-Index-V1.png"/>
 
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta name="twitter:creator" content="@thomasjuranek"/>
                 <meta name="twitter:site" content="@thomasjuranek"/>
                 <meta name="twitter:title" content="Thomas Juranek"/>
                 <meta name="twitter:description" content="Minnesota based web developer. Passionate about efficiently building lovable products. Enjoys getting outdoors and to the gym."/>
-                <meta name="twitter:image" content="http://localhost:3000/TI-Index-V1.png"/>
+                <meta name="twitter:image" content="http://thomasjuranek.com/TI-Index-V1.png"/>
                 <meta name="twitter:alt" content="Thomas Juranek"/>
             </Head>
             <body>
