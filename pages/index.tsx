@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import { Button } from '../components/button';
 import { ButtonGroup } from '../components/buttongroup';
+import { Particles } from '../components/particles';
 import { Project } from '../components/project';
 import { SocialIcons } from '../components/socialicons';
 import { Typography } from '../components/typography';
@@ -10,7 +11,7 @@ import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
     return (
-        <>
+        <Particles>
             <section className={styles.hero} id='hero'>
                 <article className={styles.titlebar}>
                     <Typography additionalClassNames={styles.titlebarName} variant="h1">Thomas Juranek</Typography>
@@ -97,7 +98,7 @@ const Home: NextPage = () => {
                     </div>
                 </article>
             </section>
-        </>
+        </Particles>
     );
 }
 

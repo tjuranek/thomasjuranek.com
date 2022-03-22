@@ -83,6 +83,7 @@
 
 /* START CONTACT STYLING */
 .contact {
+    background-color: var(--black);
     padding: 5rem 0;
 }
 
