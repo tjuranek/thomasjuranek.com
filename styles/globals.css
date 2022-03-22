@@ -21,13 +21,14 @@
 
 /* styles */
 html {
+    font-size: 18px;
     scroll-behavior: smooth;
 }
 
 body {
+    background-color: var(--black);
     color: var(--white);
     font-family: Epilogue;
-    font-size: 18px;
 }
 
 h1, h2, h3, h4, h5, h6 {
