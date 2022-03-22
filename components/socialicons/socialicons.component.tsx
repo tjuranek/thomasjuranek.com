@@ -9,7 +9,7 @@ export function SocialIcons() {
                 <FiInstagram aria-label="Instagram" className={`${styles.icon} ${styles.instagram}`} />
             </a>
 
-            <a href="https://twitter.com/thomas_juranek" target="_blank" rel="noreferrer">
+            <a href="https://twitter.com/thomasjuranek" target="_blank" rel="noreferrer">
                 <FiTwitter aria-label="Twitter" className={`${styles.icon} ${styles.twitter}`} />
             </a>
 
