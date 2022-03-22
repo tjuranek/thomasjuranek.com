@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 3rem 2rem;
+    z-index: 1;
 }
 
 .titlebarName {
@@ -32,6 +33,11 @@
 .heroInformationGreeting {
     font-family: EpilogueBold;
     font-size: 3.33rem;
+}
+
+.heroInformationHand {
+    animation: wave .35s 6 ease-in-out;
+    display: inline-block;
 }
 
 .heroInformationDescription {
@@ -68,6 +74,20 @@
     .heroInformation {
         justify-content: flex-start;
         margin-top: 0;
+    }
+}
+
+@keyframes wave {
+    from {
+        transform: none;
+    }
+
+    50% {
+        transform: rotate(45deg);
+    }
+
+    to {
+        transform: none;
     }
 }
 /* END HERO STYLING */

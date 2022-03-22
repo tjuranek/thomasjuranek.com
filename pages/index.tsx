@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
                 <article className={styles.heroInformation}>
                     <Typography additionalClassNames={styles.heroInformationGreeting} variant="p">
-                        HEY THERE, I’M THOMAS 👋
+                        HEY THERE, I’M THOMAS <span className={styles.heroInformationHand}>👋</span>
                     </Typography>
 
                     <Typography additionalClassNames={styles.heroInformationDescription} variant="p">
