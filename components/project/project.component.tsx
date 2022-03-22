@@ -9,7 +9,7 @@ export function Project(props: Props) {
     return (
         <article>
             <div className={styles.project}>
-                <Image alt={imageAlt} layout='responsive' src={image} />
+                <Image alt={imageAlt} placeholder='blur' priority={true} layout='responsive' src={image} />
 
                 <div className={styles.informationContainer}>
                     <div>

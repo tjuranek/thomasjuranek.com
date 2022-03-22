@@ -9,8 +9,6 @@ export default function Document() {
                 <meta name="keywords" content="Thomas Juranek, Nisswa, Brainerd, Baxter, Web Developer" />
 
                 <link rel="canonical" href="https://thomasjuranek.com" />
-
-                <title>Thomas Juranek</title>
             </Head>
             <body>
                 <Main />
