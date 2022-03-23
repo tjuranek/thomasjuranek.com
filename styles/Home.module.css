@@ -119,6 +119,10 @@
     font-family: EpilogueBold;
     font-size: 1.5rem;
 }
+
+.contactInformationResumeButton {
+    margin-top: 1rem;
+}
 /* END CONTACT STYLING */
 
 /* START SHARED STYLES */

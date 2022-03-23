@@ -90,9 +90,18 @@ const Home: NextPage = () => {
                     </Typography>
 
                     <div className={styles.contactInformation}>
-                        <Typography additionalClassNames={styles.contactInformationEmail} variant='p'>
-                            ✉️ hello@thomasjuranek.com
-                        </Typography>
+                        <div>
+                            <Typography additionalClassNames={styles.contactInformationEmail} variant='p'>
+                                ✉️ hello@thomasjuranek.com
+                            </Typography>
+
+                            <Button
+                                additionalClassNames={styles.contactInformationResumeButton}
+                                isDownload={true}
+                                label="Download Resume"
+                                link="Resume-ThomasJuranek.pdf"
+                            />
+                        </div>
 
                         <SocialIcons />
                     </div>
