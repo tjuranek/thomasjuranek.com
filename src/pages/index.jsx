@@ -12,15 +12,15 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import image1 from '@/images/photos/golf-teebox.jpg'
+import image2 from '@/images/photos/ski-chairlift.jpg'
+import image3 from '@/images/photos/golf-albatross.jpg'
+import image4 from '@/images/photos/ski-self.jpg'
+import image5 from '@/images/photos/golf-range.jpg'
+import logoAws from '@/images/logos/aws.svg'
+import logoCognizant from '@/images/logos/cognizant.svg'
+import logoNextek from '@/images/logos/nextek.svg'
+import logoGrowthZone from '@/images/logos/growthzone.svg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
@@ -139,35 +139,35 @@ function Newsletter() {
 function Resume() {
   let resume = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
+      company: 'Amazon Web Services',
+      title: 'Software Engineer IV',
+      logo: logoAws,
+      start: '2022',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
+      company: 'Cognizant',
+      title: 'Software Consultant',
+      logo: logoCognizant,
+      start: '2021',
+      end: '2022',
+    },
+    {
+      company: 'Nextek',
+      title: 'Software Developer II',
+      logo: logoNextek,
+      start: '2021',
       end: '2019',
     },
     {
-      company: 'Facebook',
-      title: 'iOS Software Engineer',
-      logo: logoFacebook,
-      start: '2011',
-      end: '2014',
-    },
-    {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'GrowthZone',
+      title: 'Web/Mobile Dev Intern',
+      logo: logoGrowthZone,
+      start: '2015',
+      end: '2017',
     },
   ]
 
@@ -251,48 +251,51 @@ export default function Home({ articles }) {
     <>
       <Head>
         <title>
-          Spencer Sharp - Software designer, founder, and amateur astronaut
+          Thomas Juranek - Software developer, lifter, and outdoor enthusiast
         </title>
         <meta
           name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          content="I'm Thomas, a software developer and aspirant entrepreneur recently relocated to Colorado. When I'm not at my desk, I enjoy getting to the gym or out into the mountains to hit the ski slopes or a golf course."
         />
       </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software designer, founder, and amateur astronaut.
+            Software developer, lifter, and outdoor enthusiast.
           </h1>
+
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            I'm Thomas, a software developer and aspirant entrepreneur recently
+            relocated to Colorado. When I'm not at my desk, I enjoy getting to
+            the gym or out into the mountains to hit the ski slopes or a golf
+            course.
           </p>
+
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://twitter.com"
+              href="https://twitter.com/thomasjuranek"
               aria-label="Follow on Twitter"
               icon={TwitterIcon}
             />
             <SocialLink
-              href="https://instagram.com"
+              href="https://www.instagram.com/tjuranek/"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             />
             <SocialLink
-              href="https://github.com"
+              href="https://github.com/tjuranek"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/thomasjuranek/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
           </div>
         </div>
       </Container>
+
       <Photos />
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
