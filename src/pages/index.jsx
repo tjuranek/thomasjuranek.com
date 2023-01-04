@@ -180,8 +180,8 @@ function Resume() {
       company: 'Nextek',
       title: 'Software Developer II',
       logo: logoNextek,
-      start: '2021',
-      end: '2019',
+      start: '2019',
+      end: '2022',
     },
     {
       company: 'GrowthZone',
