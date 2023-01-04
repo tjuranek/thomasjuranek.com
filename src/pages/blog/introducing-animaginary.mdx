@@ -1,32 +1,37 @@
-import { ArticleLayout } from '@/components/ArticleLayout'
+import { BlogLayout } from '@/components/BlogLayout'
 
 export const meta = {
   author: 'Adam Wathan',
-  date: '2022-07-14',
-  title: 'Rewriting the cosmOS kernel in Rust',
+  date: '2022-09-02',
+  title: 'Introducing Animaginary: High performance web animations',
   description:
-    'When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language, but it’s been a while since I’ve seen an article on the front page of Hacker News about rewriting some important tool in Go and I see articles on there about rewriting things in Rust every single week.',
+    'When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.',
 }
 
-export default (props) => <ArticleLayout meta={meta} {...props} />
+export default (props) => <BlogLayout meta={meta} {...props} />
 
-When we released the first version of cosmOS last year, it was written in Go. Go is a wonderful programming language with a lot of benefits, but it’s been a while since I’ve seen an article on the front page of Hacker News about rewriting some important tool in Go and I see articles on there about rewriting things in Rust every single week.
+When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.
 
-```rust
-use ferris_says::say;
-use std::io::{stdout, BufWriter};
+To make this possible, we needed to squeeze every drop of performance out of the browser possible. And so Animaginary was born.
 
-fn main() {
-    let stdout = stdout();
-    let message = String::from("Hello fellow hackers");
-    let width = message.chars().count();
+```js
+import { animate } from '@planetaria/animaginary'
 
-    let mut writer = BufWriter::new(stdout.lock());
-    say(message.as_bytes(), width, &mut writer).unwrap();
+export function MyComponent({ open, children }) {
+  return (
+    <animate.div
+      in={open}
+      animateFrom="opacity-0 scale-95"
+      animateTo="opacity-100 scale-100"
+      duration={350}
+    >
+      {children}
+    </animate.div>
+  )
 }
 ```
 
-I derive a large amount of my self-worth from whether or not Hacker News is impressed with the work I'm doing, so when I realized this, I cancelled all of our existing projects and started migrating everything to Rust immediately.
+Animaginary is our new web animation library that redefines what you thought was possible on the web. Hand-written in optimized WASM, Animaginary can even animate the `height` property of an element at 60fps.
 
 ## Sermone fata
 
