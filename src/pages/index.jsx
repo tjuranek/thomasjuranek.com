@@ -14,7 +14,7 @@ import {
 } from '@/components/SocialIcons'
 import image1 from '@/images/photos/golf-teebox.jpg'
 import image2 from '@/images/photos/ski-chairlift.jpg'
-import image3 from '@/images/photos/golf-albatross.jpg'
+import image3 from '@/images/photos/albatross.jpg'
 import image4 from '@/images/photos/ski-self.jpg'
 import image5 from '@/images/photos/golf-range.jpg'
 import logoAws from '@/images/logos/aws.svg'
