@@ -148,7 +148,11 @@ function Newsletter() {
         </div>
 
         <div className="mt-6 flex">
-          <Button type="submit" className="flex-none">
+          <Button
+            type="submit"
+            className="flex-none"
+            onClick={() => window.fathom.trackGoal('BTHFLSV2', 0)}
+          >
             Subscribe
           </Button>
         </div>
