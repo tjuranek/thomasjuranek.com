@@ -28,7 +28,6 @@ export default function App({ Component, pageProps, router }) {
     //  - If you're using www. for your domain, make sure you include that here.
     Fathom.load('AABXTBZL', {
       url: 'https://restored-cat.thomasjuranek.com/script.js',
-      includedDomains: ['thomasjuranek.com'],
     })
 
     console.log('fathom init')
