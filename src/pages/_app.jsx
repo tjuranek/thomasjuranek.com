@@ -31,8 +31,12 @@ export default function App({ Component, pageProps, router }) {
       includedDomains: ['thomasjuranek.com'],
     })
 
+    console.log('fathom init')
+    console.log('fathom')
+
     function onRouteChangeComplete() {
       Fathom.trackPageview()
+      console.log('fathom page view')
     }
     // Record a pageview when route changes
     router.events.on('routeChangeComplete', onRouteChangeComplete)

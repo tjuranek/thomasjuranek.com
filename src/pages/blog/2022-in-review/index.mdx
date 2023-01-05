@@ -1,5 +1,6 @@
 import { BlogLayout } from '@/components/BlogLayout'
 import Image from 'next/image'
+import mountain from './mountain.jpg'
 
 export const meta = {
   author: 'Thomas Juranek',
@@ -10,6 +11,11 @@ export const meta = {
 }
 
 export default (props) => <BlogLayout meta={meta} {...props} />
+
+<Image
+  src={mountain}
+  alt="A picture of a mountain from the perspective of a skiier."
+/>
 
 As 2023 begins, I want to take a moment to reflect on everything that's happened in my life this year. It has been an exciting and transformative year - I'm proud of the progress I have made. From becoming temporarily debt free and starting a new job at a popular tech company, to moving to Colorado and finding some great friends, I have had a lot to celebrate.
 
