@@ -27,7 +27,8 @@ export default function App({ Component, pageProps, router }) {
     //  - This must be an exact match of your domain.
     //  - If you're using www. for your domain, make sure you include that here.
     Fathom.load('AABXTBZL', {
-      includedDomains: ['restored-cat.thomasjuranek.com/script.js'],
+      url: 'https://restored-cat.thomasjuranek.com/script.js',
+      includedDomains: ['thomasjuranek.com'],
     })
 
     function onRouteChangeComplete() {
