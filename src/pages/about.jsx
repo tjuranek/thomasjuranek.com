@@ -1,0 +1,149 @@
+import Image from 'next/image'
+import Head from 'next/head'
+import Link from 'next/link'
+import clsx from 'clsx'
+
+import { Container } from '@/components/Container'
+import {
+  TwitterIcon,
+  InstagramIcon,
+  GitHubIcon,
+  LinkedInIcon,
+} from '@/components/SocialIcons'
+import portraitImage from '@/images/photos/albatross.jpg'
+
+function SocialLink({ className, href, children, icon: Icon }) {
+  return (
+    <li className={clsx(className, 'flex')}>
+      <Link
+        href={href}
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
+      >
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
+        <span className="ml-4">{children}</span>
+      </Link>
+    </li>
+  )
+}
+
+function MailIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path
+        fillRule="evenodd"
+        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
+      />
+    </svg>
+  )
+}
+
+export default function About() {
+  return (
+    <>
+      <Head>
+        <title>About - Thomas Juranek</title>
+        <meta
+          name="description"
+          content="
+                I'm a software developer based in beautiful Colorado. I have a
+                passion for creating high-quality, innovative software solutions
+                and am always looking for new challenges to tackle."
+        />
+      </Head>
+      <Container className="mt-16 sm:mt-32">
+        <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+          <div className="lg:pl-20">
+            <div className="max-w-xs px-2.5 lg:max-w-none">
+              <Image
+                src={portraitImage}
+                alt=""
+                sizes="(min-width: 1024px) 32rem, 20rem"
+                className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+              />
+            </div>
+          </div>
+          <div className="lg:order-first lg:row-span-2">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+              I’m Thomas Juranek.
+            </h1>
+
+            <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+              <p>
+                I'm a software developer based in beautiful Colorado. I have a
+                passion for creating high-quality, innovative software solutions
+                and am always looking for new challenges to tackle.
+              </p>
+
+              <p>
+                My technical education background isn't very traditional. I
+                learned the basics in high school and later attended a bootcamp
+                in Minneapolis. Through various online courses I've honed my
+                skills to become a strong developer.
+              </p>
+
+              <p>
+                My different positions in my career have exposed me to frontend,
+                backend, and infrastructure work as a developer. I appreciate
+                the variety of industries and company sizes I've contributed in.
+                Most recently, I've been working on open source data
+                visualization projects in the internet of things space at AWS.
+              </p>
+
+              <p>
+                Through my education and career I've learned a ton from other
+                developers or founders. I'm at a time in my life where I feel
+                like it's time to join them and build my own projects. I
+                anticipate being able to share my experience and knowledged
+                gained along the way on this site.
+              </p>
+
+              <p>
+                My 2023 is going to be focused on creating. You can follow along
+                by reading my blog, joining the newsletter, and checking out my
+                social media.
+              </p>
+            </div>
+          </div>
+          <div className="lg:pl-20">
+            <ul role="list">
+              <SocialLink
+                href="https://twitter.com/thomasjuranek"
+                icon={TwitterIcon}
+              >
+                Follow on Twitter
+              </SocialLink>
+              <SocialLink
+                href="https://www.instagram.com/tjuranek/"
+                icon={InstagramIcon}
+                className="mt-4"
+              >
+                Follow on Instagram
+              </SocialLink>
+              <SocialLink
+                href="https://github.com/tjuranek"
+                icon={GitHubIcon}
+                className="mt-4"
+              >
+                Follow on GitHub
+              </SocialLink>
+              <SocialLink
+                href="https://www.linkedin.com/in/thomasjuranek/"
+                icon={LinkedInIcon}
+                className="mt-4"
+              >
+                Follow on LinkedIn
+              </SocialLink>
+              <SocialLink
+                href="mailto:hello@thomasjuranek.com"
+                icon={MailIcon}
+                className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+              >
+                hello@thomasjuranek.com
+              </SocialLink>
+            </ul>
+          </div>
+        </div>
+      </Container>
+    </>
+  )
+}
