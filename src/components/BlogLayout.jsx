@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { Container } from '@/components/Container'
 import { formatDate } from '@/lib/formatDate'
 import { Prose } from '@/components/Prose'
+import { Newsletter } from '@/pages'
 
 function ArrowLeftIcon(props) {
   return (
@@ -85,6 +86,10 @@ export function BlogLayout({
               <Prose className="mt-8">{children}</Prose>
             </blog>
           </div>
+        </div>
+
+        <div className="mx-auto mt-16 w-3/4">
+          <Newsletter />
         </div>
       </Container>
     </>

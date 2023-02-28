@@ -105,7 +105,8 @@ function SocialLink({ icon: Icon, ...props }) {
   )
 }
 
-function Newsletter() {
+/** TODO: break into a non page route component */
+export function Newsletter() {
   return (
     <>
       <a id="newsletter" />
