@@ -35,6 +35,26 @@ export function BlogLayout({
       <Head>
         <title>{`${meta.title} - Thomas Juranek`}</title>
         <meta name="description" content={meta.description} />
+        {/** TODO: iterate over everything on meta object */}
+        {meta['twitter:image'] && (
+          <meta name="twitter:image" content={meta['twitter:image']} />
+        )}
+        {meta['twitter:title'] && (
+          <meta name="twitter:title" content={meta['twitter:title']} />
+        )}
+        {meta['twitter:description'] && (
+          <meta
+            name="twitter:description"
+            content={meta['twitter:description']}
+          />
+        )}
+        {meta['og:image'] && (
+          <meta name="og:image" content={meta['og:image']} />
+        )}
+        {meta['og:title'] && (
+          <meta name="og:title" content={meta['og:title']} />
+        )}
+        {meta['og:url'] && <meta name="og:url" content={meta['og:url']} />}
       </Head>
       <Container className="mt-16 lg:mt-32">
         <div className="xl:relative">
