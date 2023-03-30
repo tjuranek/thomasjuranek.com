@@ -1,0 +1,91 @@
+import { BlogLayout } from '@/components/BlogLayout'
+import Image from 'next/image'
+import landscape from './landscape.webp'
+import codeGen1 from './code-gen-1.png'
+import codeGen2 from './code-gen-2.png'
+import chatgptChat from './chatgpt-chat.png'
+import chatgptCode from './chatgpt-code.png'
+
+export const meta = {
+  author: 'Thomas Juranek',
+  date: '2023-03-30',
+  title: 'Developer Productivity',
+  description:
+    "As 2023 begins, I want to take a moment to reflect on everything that's happened in my life this year. It has been an exciting and transformative year - I'm proud of the progress I have made.",
+}
+
+export default (props) => <BlogLayout meta={meta} {...props} />
+
+<Image
+  src={landscape}
+  alt="An artificial intelligence created picture of a mountainous landscape"
+/>
+
+We've witnessed some remarkable changes in the tech industry over the past few years. Cryptocurrency prices soared and plummeted, the term "fungible" became ubiquitous, and Reddit manipulated the US stock market. Artificial intelligence (AI) is the latest buzzword, but will it stick around?
+
+AI offers a unique value proposition. Rather than decentralizing wealth or proving originality, it's marketed as a tool for enhancing knowledge and efficiency. I was genuinely impressed the first time I used a product like ChatGPT to explain a new technical concept.
+
+These AI concepts aren't limited to answering questions. Products like Jasper can eliminate writer's block by generating entire articles, Voice.ai can change your voice in real-time, and Midjourney can create high-quality images from just about any prompt.
+
+These tools provide professionals with ample opportunities to increase productivity. Write more articles faster, get inspiration for the 3D model you need to design, and answer questions more quickly.
+
+As a software developer, I want to accomplish more in less time. How can AI help me achieve that goal?
+
+## Code Generation
+
+Your product owner may want AI to write an entire application or a feature of an application, but enough tests have been done to prove that this isn't practically possible. For now, you have some job security. **😁**
+
+GitHub Copilot is likely the most popular in-editor tool for AI-assisted coding. Its best feature is getting code suggestions. Below, it can tell how to define the `Admin` type.
+
+<Image
+  src={codeGen1}
+  alt="GitHub copilot suggesting an inline change to a JavaScript object."
+/>
+
+It can generate larger blocks of code too, such as individual functions. It's contextually aware of things like function names, the libraries you've installed, and other code you've written.
+
+<Image
+  src={codeGen2}
+  alt="GitHub copilot suggesting the body of a function based on the function name."
+/>
+
+These are pretty basic examples, but when you start using it in full projects, it delivers a high amount of value.
+
+## Code Explanation
+
+Sometimes you come across chunks of code that don’t make sense, such as a regex or a function with poorly named variables. For example, I recently saw `const username = response.body.data!.username;` and didn’t have a clue what `!.` did.
+
+Searching “!. typescript” on Google wasn't effective as I just got a bunch of popular links relating to TypeScript in general. There wasn't anything related to `!.`, so I turned to ChatGPT and got the answer in about five seconds.
+
+<Image src={chatgptChat} alt="ChatGPT explaining a snippet of code." />
+
+It turns out that you can explicitly tell the compiler when you know something won’t be null. However, the "non-null assertion operator" has valid warnings about why you might not want to use it. It’s impressive that ChatGPT brought that up.
+
+## Unit Test Generation
+
+ChatGPT is an excellent tool for generating unit tests from a block of code. I tested it by giving it a function that calculates the sum of an array of numbers, and made it a bit tricky by not passing the array as an argument, but by using a dependency function instead.
+
+<Image src={chatgptCode} alt="ChatGPT explaining a snippet of code." />
+
+ChatGPT did an excellent job of recognizing `getNumbers` as a dependency and mocking its return value. The generated tests cover both when the array is empty and when it is populated. The tool also follows the 'Arrange, Act, Assert' pattern and resets mock values at the end of each test. However, the `global.Math` and `global.console` mocks are unnecessary.
+
+## What’s Coming Up?
+
+Six days ago, GitHub announced [GitHub Copilot X](https://github.blog/2023-03-22-github-copilot-x-the-ai-powered-developer-experience/), their vision for the future of AI-powered software development. This new version of Copilot will add several new features, including:
+
+- GitHub Copilot Chat: A chat interface similar to ChatGPT, but integrated into your code editor and more contextually aware, providing in-depth analysis.
+- Copilot for Pull Requests: Automatic pull request descriptions and suggested improvements.
+- Copilot for Docs: AI-generated answers about documentation.
+- Copilot for the Command Line: Integration of Copilot in the terminal with suggested commands and explanations.
+
+A better GPT model that’s easier and more widely available to use? Sign me up!
+
+## Takeaways
+
+AI coding tools offer a range of features, from code generation and explanation to full unit test generation, with even more on the horizon. However, what can we learn from this?
+
+Firstly, it seems unlikely that mid to senior level software development jobs will be completely replaced anytime soon. ChatGPT, for example, can be seen as an assistant developer. You will still be responsible for assigning it tasks and reviewing generated code.
+
+Secondly, understanding the fundamentals is crucial. You must comprehend the code generated by AI to identify and correct any errors. AI is not infallible, and the ability to detect and address mistakes will be valuable.
+
+Lastly, your productivity could increase significantly. If Copilot X delivers, you can automate tedious or repetitive tasks as a developer. Learning how to use it effectively within your development workflow will free up more time for you to focus on tasks that can't be automated.
