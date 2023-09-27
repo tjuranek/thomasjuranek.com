@@ -17,6 +17,7 @@ import image2 from '@/images/photos/ski-chairlift.jpg'
 import image3 from '@/images/photos/albatross.jpg'
 import image4 from '@/images/photos/ski-self.jpg'
 import image5 from '@/images/photos/golf-range.jpg'
+import logoHydra from '@/images/logos/hydra.svg'
 import logoAws from '@/images/logos/aws.svg'
 import logoCognizant from '@/images/logos/cognizant.svg'
 import logoNextek from '@/images/logos/nextek.svg'
@@ -165,14 +166,21 @@ export function Newsletter() {
 function Resume() {
   let resume = [
     {
-      company: 'Amazon Web Services',
-      title: 'Software Engineer IV',
-      logo: logoAws,
-      start: '2022',
+      company: 'Hydra Host',
+      title: 'Software Engineer',
+      logo: logoHydra,
+      start: '2023',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
+    },
+    {
+      company: 'Amazon Web Services',
+      title: 'Software Engineer IV',
+      logo: logoAws,
+      start: '2022',
+      end: '2023',
     },
     {
       company: 'Cognizant',
