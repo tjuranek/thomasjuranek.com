@@ -10,21 +10,12 @@
     />
     <meta name="author" content="Thomas Juranek" />
     <meta name="color-scheme" content="light dark" />
-    <meta
-      name="theme-color"
-      content="#f4f1ea"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#141311"
-      media="(prefers-color-scheme: dark)"
-    />
+    <meta name="theme-color" content="#6ea8c9" />
     <link rel="canonical" href="https://thomasjuranek.com/" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%236ea8c9'/%3E%3Cpath fill='%237d5a45' d='M6 26 13 11l4 8 5-12 8 19z'/%3E%3Cpath fill='%233e5344' d='M0 28 9 18l7 8 6-10 10 12v4H0z'/%3E%3C/svg%3E"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Thomas Juranek" />
     <meta property="og:title" content="Thomas Juranek" />
@@ -33,14 +24,9 @@
       content="Boulder, CO. GPU infrastructure at Hydra Host. Building companies and apps at Krux Lab."
     />
     <meta property="og:url" content="https://thomasjuranek.com/" />
-    <meta property="og:image" content="https://thomasjuranek.com/og.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Thomas Juranek — Boulder. Building companies." />
+    <meta property="og:image" content="https://thomasjuranek.com/avatar.jpg" />
     <meta property="og:locale" content="en_US" />
-
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@thomasjuranek" />
     <meta name="twitter:creator" content="@thomasjuranek" />
     <meta name="twitter:title" content="Thomas Juranek" />
@@ -48,15 +34,14 @@
       name="twitter:description"
       content="Boulder, CO. GPU infrastructure at Hydra Host. Building companies and apps at Krux Lab."
     />
-    <meta name="twitter:image" content="https://thomasjuranek.com/og.png" />
-    <meta name="twitter:image:alt" content="Thomas Juranek — Boulder. Building companies." />
-
+    <meta name="twitter:image" content="https://thomasjuranek.com/avatar.jpg" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Thomas Juranek",
         "url": "https://thomasjuranek.com",
+        "image": "https://thomasjuranek.com/avatar.jpg",
         "email": "mailto:thomas@kruxlab.com",
         "address": {
           "@type": "PostalAddress",
@@ -64,10 +49,7 @@
           "addressRegion": "CO",
           "addressCountry": "US"
         },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Hydra Host"
-        },
+        "worksFor": { "@type": "Organization", "name": "Hydra Host" },
         "sameAs": [
           "https://x.com/thomasjuranek",
           "https://github.com/tjuranek",
@@ -75,59 +57,106 @@
         ]
       }
     </script>
-
     <style>
       :root {
-        color-scheme: light dark;
-        --bg: #f4f1ea;
-        --ink: #1c1916;
-        --mute: #5f5a53;
-        --line: #d4cdc2;
-        --focus: #8a3b12;
+        --ink: #1b211e;
+        --mute: #3d4a44;
+        --link: #1b211e;
+        --ring: #c49a78;
+        --scrim: rgba(236, 243, 247, 0.78);
+        --far: #8aa6b6;
+        --mid: #6b8670;
+        --iron: #8d6248;
+        --iron-lit: #c49a78;
+        --near: #3e5344;
+        --fore: #2a3a30;
         --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
           "Times New Roman", serif;
         --font-sans: "Segoe UI", system-ui, -apple-system, sans-serif;
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #141311;
-          --ink: #eeeae3;
-          --mute: #a8a299;
-          --line: #2f2c27;
-          --focus: #e8b48a;
-        }
+      html[data-sky="dawn"] {
+        color-scheme: dark;
+        --ink: #fff4ea;
+        --mute: #ecd2c0;
+        --link: #fff4ea;
+        --ring: #f0b48a;
+        --scrim: rgba(42, 24, 28, 0.42);
+        --far: #6b5a72;
+        --mid: #5a4a55;
+        --iron: #7a3d3a;
+        --iron-lit: #ef9a78;
+        --near: #3a2c32;
+        --fore: #241c20;
+      }
+
+      html[data-sky="dusk"] {
+        color-scheme: dark;
+        --ink: #fff1e4;
+        --mute: #ebc8ae;
+        --link: #fff1e4;
+        --ring: #f08a4a;
+        --scrim: rgba(28, 16, 22, 0.48);
+        --far: #4a3a58;
+        --mid: #4a3844;
+        --iron: #6a2c28;
+        --iron-lit: #e86a3a;
+        --near: #2c2228;
+        --fore: #181418;
+      }
+
+      html[data-sky="night"] {
+        color-scheme: dark;
+        --ink: #e8e6df;
+        --mute: #b4b0a6;
+        --link: #e8e6df;
+        --ring: #c8b49a;
+        --scrim: rgba(8, 10, 16, 0.55);
+        --far: #1c2740;
+        --mid: #182030;
+        --iron: #2a2434;
+        --iron-lit: #4a4458;
+        --near: #121820;
+        --fore: #0a0d12;
       }
 
       * {
         box-sizing: border-box;
       }
 
-      html {
+      html,
+      body {
+        margin: 0;
         min-height: 100%;
-        background: var(--bg);
+        background: #6ea8c9;
         color: var(--ink);
       }
 
+      html[data-sky="dawn"] body {
+        background: #2a1c28;
+      }
+      html[data-sky="dusk"] body {
+        background: #1c1424;
+      }
+      html[data-sky="night"] body {
+        background: #07080d;
+      }
+
       body {
-        margin: 0;
-        min-height: 100dvh;
         font-family: var(--font-sans);
         font-size: 1.0625rem;
-        line-height: 1.6;
+        line-height: 1.55;
         letter-spacing: -0.011em;
-        background: var(--bg);
-        color: var(--ink);
       }
 
       .skip {
         position: absolute;
         left: 1rem;
         top: 0;
-        z-index: 10;
+        z-index: 5;
         padding: 0.5rem 0.75rem;
         background: var(--ink);
-        color: var(--bg);
+        color: #fff;
         text-decoration: none;
         transform: translateY(-140%);
       }
@@ -136,42 +165,112 @@
         transform: none;
       }
 
+      .scene {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+        background: linear-gradient(#6ea8c9, #d8ebf5 58%, #eef6fb);
+      }
+
+      html[data-sky="dawn"] .scene {
+        background: linear-gradient(#1b2744, #7a4d6a 48%, #f0b48a);
+      }
+      html[data-sky="dusk"] .scene {
+        background: linear-gradient(#1a1433, #8b3a45 52%, #ee9a5a);
+      }
+      html[data-sky="night"] .scene {
+        background: linear-gradient(#06070d, #10182a 60%, #1a2238);
+      }
+
+      canvas,
+      .range {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .range {
+        display: block;
+      }
+
+      .far {
+        fill: var(--far);
+      }
+      .mid {
+        fill: var(--mid);
+      }
+      .iron {
+        fill: var(--iron);
+      }
+      .iron-lit {
+        fill: var(--iron-lit);
+      }
+      .near {
+        fill: var(--near);
+      }
+      .fore {
+        fill: var(--fore);
+      }
+
       main {
-        display: flex;
+        position: relative;
+        z-index: 1;
         min-height: 100dvh;
-        align-items: center;
-        justify-content: center;
-        padding: 4.5rem 1.5rem;
+        display: flex;
+        align-items: flex-end;
+        padding: 2.25rem clamp(1.25rem, 4vw, 3.5rem) 2.75rem;
       }
 
       .page {
-        width: min(36rem, 100%);
+        width: min(34rem, 100%);
+        padding: 1.5rem 1.35rem 1.35rem;
+        border-radius: 1.25rem;
+        background: var(--scrim);
+        backdrop-filter: blur(14px) saturate(1.1);
+        -webkit-backdrop-filter: blur(14px) saturate(1.1);
+      }
+
+      .portrait {
+        width: 6.5rem;
+        height: 6.5rem;
+        margin: 0 0 1.15rem;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 18%;
+        box-shadow: 0 0 0 3px var(--ring), 0 10px 28px rgba(0, 0, 0, 0.18);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .portrait:hover,
+      .portrait:focus-visible {
+        transform: scale(1.04);
+        box-shadow: 0 0 0 4px var(--ring), 0 12px 32px rgba(0, 0, 0, 0.22);
       }
 
       h1 {
         margin: 0;
         font-family: var(--font-serif);
-        font-size: clamp(2.5rem, 8vw, 3.75rem);
+        font-size: clamp(2.35rem, 7vw, 3.4rem);
         font-weight: 500;
-        line-height: 1.05;
+        line-height: 1.04;
         letter-spacing: -0.03em;
       }
 
       .tagline {
-        margin: 0.85rem 0 0;
+        margin: 0.55rem 0 0;
         color: var(--mute);
-        font-size: 1.125rem;
+        font-size: 1.08rem;
       }
 
       .about {
-        margin: 2rem 0 0;
-        padding: 0;
-        max-width: 32rem;
+        margin: 1.25rem 0 0;
       }
 
       .about p {
-        margin: 0 0 0.85rem;
-        color: var(--ink);
+        margin: 0 0 0.7rem;
       }
 
       .about p:last-child {
@@ -179,60 +278,111 @@
       }
 
       nav {
-        margin-top: 2.25rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--line);
+        margin-top: 1.35rem;
+        padding-top: 1rem;
+        border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
       }
 
       nav ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.35rem 1.15rem;
+        gap: 0.45rem 1.05rem;
         margin: 0;
         padding: 0;
         list-style: none;
       }
 
       a {
-        color: inherit;
+        color: var(--link);
         text-underline-offset: 0.18em;
         text-decoration-thickness: 1px;
-        text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent);
+        text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent);
       }
 
       a:hover {
-        color: var(--focus);
-        text-decoration-color: var(--focus);
+        text-decoration-color: currentColor;
       }
 
       a:focus-visible {
-        outline: 2px solid var(--focus);
+        outline: 2px solid var(--ring);
         outline-offset: 3px;
         border-radius: 2px;
       }
 
-      @media (max-width: 40rem) {
+      @media (min-width: 48rem) {
         main {
-          align-items: flex-start;
-          padding-top: 18vh;
+          align-items: center;
+          padding-bottom: 4rem;
         }
 
-        nav ul {
-          gap: 0.75rem 1rem;
+        .page {
+          padding: 1.75rem 1.6rem 1.5rem;
         }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
+        .portrait {
+          transition: none;
         }
       }
     </style>
   </head>
   <body>
     <a class="skip" href="#content">Skip to content</a>
+    <div class="scene" aria-hidden="true">
+      <canvas id="sky"></canvas>
+      <svg
+        class="range"
+        viewBox="0 0 1600 900"
+        preserveAspectRatio="xMidYMax slice"
+      >
+        <g class="layer" data-depth="0.04">
+          <path
+            class="far"
+            d="M0 470C120 452 210 430 320 438C450 448 540 400 680 412C820 424 930 378 1080 396C1220 412 1340 368 1600 390V900H0Z"
+          />
+        </g>
+        <g class="layer" data-depth="0.1">
+          <path
+            class="mid"
+            d="M0 540C180 510 300 528 430 500C580 468 700 520 840 490C980 460 1100 510 1260 480C1400 456 1500 500 1600 488V900H0Z"
+          />
+        </g>
+        <g class="layer" data-depth="0.22">
+          <path class="iron" d="M690 670 820 356 858 382 792 670Z" />
+          <path class="iron-lit" d="M792 670 858 382 888 400 832 670Z" />
+          <path class="iron" d="M780 670 930 286 972 314 888 670Z" />
+          <path class="iron-lit" d="M888 670 972 314 1006 336 948 670Z" />
+          <path class="iron" d="M900 670 1088 188 1142 226 1036 670Z" />
+          <path class="iron-lit" d="M1036 670 1142 226 1188 258 1110 670Z" />
+          <path class="iron" d="M1068 670 1224 318 1266 344 1196 670Z" />
+          <path class="iron-lit" d="M1196 670 1266 344 1302 366 1244 670Z" />
+          <path class="iron" d="M1210 670 1340 392 1376 414 1320 670Z" />
+          <path class="iron-lit" d="M1320 670 1376 414 1408 434 1360 670Z" />
+        </g>
+        <g class="layer" data-depth="0.34">
+          <path
+            class="near"
+            d="M0 690C140 650 250 672 380 640C520 604 640 658 790 636C960 610 1100 668 1260 644C1400 624 1500 660 1600 648V900H0Z"
+          />
+        </g>
+        <g class="layer" data-depth="0.5">
+          <path
+            class="fore"
+            d="M0 790C220 750 420 810 680 776C980 736 1220 820 1600 770V900H0Z"
+          />
+        </g>
+      </svg>
+    </div>
     <main id="content">
       <article class="page">
+        <img
+          class="portrait"
+          src="/avatar.jpg"
+          width="400"
+          height="400"
+          alt="Thomas Juranek"
+        />
         <header>
           <h1>Thomas Juranek</h1>
           <p class="tagline">Boulder. Building companies.</p>
@@ -240,9 +390,9 @@
         <div class="about">
           <p>I work on GPU infrastructure at Hydra Host.</p>
           <p>
-            Krux Lab is the small studio where I build companies and apps.
+            I run Krux Lab, a small studio that builds companies and apps.
           </p>
-          <p>New dad. That’s the whole plot.</p>
+          <p>New dad. The mountains don’t care.</p>
         </div>
         <nav aria-label="Elsewhere">
           <ul>
@@ -262,5 +412,237 @@
         </nav>
       </article>
     </main>
+    <script>
+      (function () {
+        var canvas = document.getElementById("sky");
+        var ctx = canvas.getContext("2d", { alpha: false });
+        var layers = Array.prototype.slice.call(
+          document.querySelectorAll(".layer")
+        );
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)")
+          .matches;
+        var pointer = { x: 0.5, y: 0.5 };
+        var target = { x: 0.5, y: 0.5 };
+        var stars = [];
+        var clouds = [];
+        var flakes = [];
+        var w = 0;
+        var h = 0;
+        var sky = "day";
+        var hour = 12;
+
+        function periodFromHour(hr) {
+          if (hr >= 5 && hr < 8) return "dawn";
+          if (hr >= 8 && hr < 17) return "day";
+          if (hr >= 17 && hr < 20) return "dusk";
+          return "night";
+        }
+
+        function applySky() {
+          var forced = new URLSearchParams(location.search).get("sky");
+          var now = new Date();
+          hour = now.getHours() + now.getMinutes() / 60;
+          sky =
+            forced === "dawn" ||
+            forced === "day" ||
+            forced === "dusk" ||
+            forced === "night"
+              ? forced
+              : periodFromHour(hour);
+          document.documentElement.setAttribute("data-sky", sky);
+          var theme =
+            sky === "day" ? "#6ea8c9" : sky === "night" ? "#07080d" : "#2a1c28";
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", theme);
+          if (forced === "dawn") hour = 6.4;
+          if (forced === "day") hour = 13;
+          if (forced === "dusk") hour = 18.2;
+          if (forced === "night") hour = 22;
+        }
+
+        function seed() {
+          stars = [];
+          clouds = [];
+          flakes = [];
+          var i;
+          for (i = 0; i < 110; i++) {
+            stars.push({
+              x: Math.random(),
+              y: Math.random() * 0.55,
+              r: Math.random() * 1.3 + 0.3,
+              o: Math.random() * 0.55 + 0.25,
+              p: Math.random() * Math.PI * 2,
+            });
+          }
+          for (i = 0; i < 4; i++) {
+            clouds.push({
+              x: Math.random() * 1.2 - 0.1,
+              y: 0.08 + Math.random() * 0.22,
+              s: 70 + Math.random() * 90,
+              v: 0.004 + Math.random() * 0.008,
+            });
+          }
+          for (i = 0; i < 36; i++) {
+            flakes.push({
+              x: Math.random(),
+              y: Math.random(),
+              r: Math.random() * 1.4 + 0.5,
+              v: 0.012 + Math.random() * 0.03,
+              drift: (Math.random() - 0.5) * 0.01,
+            });
+          }
+        }
+
+        function resize() {
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          w = window.innerWidth;
+          h = window.innerHeight;
+          canvas.width = Math.floor(w * dpr);
+          canvas.height = Math.floor(h * dpr);
+          canvas.style.width = w + "px";
+          canvas.style.height = h + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function skyStops() {
+          if (sky === "dawn") return ["#1b2744", "#7a4d6a", "#f0b48a"];
+          if (sky === "dusk") return ["#1a1433", "#8b3a45", "#ee9a5a"];
+          if (sky === "night") return ["#06070d", "#10182a", "#1a2238"];
+          return ["#4d97c4", "#b7daf0", "#eef6fb"];
+        }
+
+        function body(cx, cy, s, fill) {
+          ctx.fillStyle = fill;
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, s, s * 0.38, 0, 0, Math.PI * 2);
+          ctx.ellipse(cx - s * 0.55, cy + s * 0.08, s * 0.55, s * 0.3, 0, 0, Math.PI * 2);
+          ctx.ellipse(cx + s * 0.5, cy + s * 0.1, s * 0.5, s * 0.28, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        function paint(t) {
+          var stops = skyStops();
+          var g = ctx.createLinearGradient(0, 0, 0, h);
+          g.addColorStop(0, stops[0]);
+          g.addColorStop(0.52, stops[1]);
+          g.addColorStop(1, stops[2]);
+          ctx.fillStyle = g;
+          ctx.fillRect(0, 0, w, h);
+
+          var arc = ((hour - 5) / 14) * Math.PI;
+          if (hour >= 5 && hour <= 19) {
+            var sx = w * (0.12 + ((hour - 5) / 14) * 0.76);
+            var sy = h * (0.42 - Math.sin(Math.max(0, Math.min(Math.PI, arc))) * 0.28);
+            var sun = ctx.createRadialGradient(sx, sy, 0, sx, sy, 46);
+            sun.addColorStop(0, sky === "day" ? "#fff4c8" : "#ffd19a");
+            sun.addColorStop(0.45, sky === "day" ? "rgba(255,232,160,0.7)" : "rgba(255,170,110,0.55)");
+            sun.addColorStop(1, "rgba(255,180,120,0)");
+            ctx.fillStyle = sun;
+            ctx.beginPath();
+            ctx.arc(sx, sy, 46, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          if (sky === "night") {
+            var mx = w * 0.78;
+            var my = h * 0.16;
+            ctx.fillStyle = "#f0ead8";
+            ctx.beginPath();
+            ctx.arc(mx, my, 16, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "#10182a";
+            ctx.beginPath();
+            ctx.arc(mx + 7, my - 3, 14, 0, Math.PI * 2);
+            ctx.fill();
+            stars.forEach(function (s) {
+              var tw = reduce ? s.o : s.o * (0.65 + 0.35 * Math.sin(t / 700 + s.p));
+              ctx.fillStyle = "rgba(255,255,255," + tw + ")";
+              ctx.beginPath();
+              ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
+              ctx.fill();
+            });
+          }
+
+          if (sky !== "night") {
+            var tint =
+              sky === "day"
+                ? "rgba(255,255,255,0.55)"
+                : "rgba(255,220,200,0.28)";
+            clouds.forEach(function (c) {
+              body(c.x * w, c.y * h, c.s, tint);
+            });
+          } else {
+            flakes.forEach(function (f) {
+              ctx.fillStyle = "rgba(255,255,255,0.55)";
+              ctx.beginPath();
+              ctx.arc(f.x * w, f.y * h, f.r, 0, Math.PI * 2);
+              ctx.fill();
+            });
+          }
+        }
+
+        function step(t) {
+          if (!reduce) {
+            pointer.x += (target.x - pointer.x) * 0.06;
+            pointer.y += (target.y - pointer.y) * 0.06;
+            clouds.forEach(function (c) {
+              c.x += c.v * 0.016;
+              if (c.x > 1.25) c.x = -0.25;
+            });
+            if (sky === "night") {
+              flakes.forEach(function (f) {
+                f.y += f.v * 0.016;
+                f.x += f.drift * 0.016;
+                if (f.y > 1) {
+                  f.y = -0.02;
+                  f.x = Math.random();
+                }
+              });
+            }
+            layers.forEach(function (layer) {
+              var d = parseFloat(layer.getAttribute("data-depth"));
+              var x = (pointer.x - 0.5) * 48 * d;
+              var y = (pointer.y - 0.5) * 22 * d;
+              layer.setAttribute("transform", "translate(" + x + " " + y + ")");
+            });
+          }
+          paint(t);
+          if (!reduce) requestAnimationFrame(step);
+        }
+
+        applySky();
+        seed();
+        resize();
+        paint(0);
+
+        if (!reduce) {
+          window.addEventListener(
+            "pointermove",
+            function (e) {
+              target.x = e.clientX / w;
+              target.y = e.clientY / h;
+            },
+            { passive: true }
+          );
+          window.addEventListener(
+            "scroll",
+            function () {
+              target.y = Math.min(1, window.scrollY / 400 + 0.5);
+            },
+            { passive: true }
+          );
+          requestAnimationFrame(step);
+        }
+
+        window.addEventListener("resize", function () {
+          resize();
+          if (reduce) paint(0);
+        });
+
+        document.addEventListener("visibilitychange", function () {
+          if (!document.hidden) applySky();
+        });
+      })();
+    </script>
   </body>
 </html>
