@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thomas Juranek</title>
+    <meta
+      name="description"
+      content="Thomas Juranek — Boulder, CO. GPU infrastructure at Hydra Host. Building companies and apps at Krux Lab."
+    />
+    <meta name="author" content="Thomas Juranek" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#f4f1ea"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#141311"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="canonical" href="https://thomasjuranek.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Thomas Juranek" />
+    <meta property="og:title" content="Thomas Juranek" />
+    <meta
+      property="og:description"
+      content="Boulder, CO. GPU infrastructure at Hydra Host. Building companies and apps at Krux Lab."
+    />
+    <meta property="og:url" content="https://thomasjuranek.com/" />
+    <meta property="og:image" content="https://thomasjuranek.com/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Thomas Juranek — Boulder. Building companies." />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@thomasjuranek" />
+    <meta name="twitter:creator" content="@thomasjuranek" />
+    <meta name="twitter:title" content="Thomas Juranek" />
+    <meta
+      name="twitter:description"
+      content="Boulder, CO. GPU infrastructure at Hydra Host. Building companies and apps at Krux Lab."
+    />
+    <meta name="twitter:image" content="https://thomasjuranek.com/og.png" />
+    <meta name="twitter:image:alt" content="Thomas Juranek — Boulder. Building companies." />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Thomas Juranek",
+        "url": "https://thomasjuranek.com",
+        "email": "mailto:thomas@kruxlab.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Boulder",
+          "addressRegion": "CO",
+          "addressCountry": "US"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Hydra Host"
+        },
+        "sameAs": [
+          "https://x.com/thomasjuranek",
+          "https://github.com/tjuranek",
+          "https://kruxlab.com"
+        ]
+      }
+    </script>
+
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f4f1ea;
+        --ink: #1c1916;
+        --mute: #5f5a53;
+        --line: #d4cdc2;
+        --focus: #8a3b12;
+        --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+          "Times New Roman", serif;
+        --font-sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #141311;
+          --ink: #eeeae3;
+          --mute: #a8a299;
+          --line: #2f2c27;
+          --focus: #e8b48a;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: var(--font-sans);
+        font-size: 1.0625rem;
+        line-height: 1.6;
+        letter-spacing: -0.011em;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      .skip {
+        position: absolute;
+        left: 1rem;
+        top: 0;
+        z-index: 10;
+        padding: 0.5rem 0.75rem;
+        background: var(--ink);
+        color: var(--bg);
+        text-decoration: none;
+        transform: translateY(-140%);
+      }
+
+      .skip:focus {
+        transform: none;
+      }
+
+      main {
+        display: flex;
+        min-height: 100dvh;
+        align-items: center;
+        justify-content: center;
+        padding: 4.5rem 1.5rem;
+      }
+
+      .page {
+        width: min(36rem, 100%);
+      }
+
+      h1 {
+        margin: 0;
+        font-family: var(--font-serif);
+        font-size: clamp(2.5rem, 8vw, 3.75rem);
+        font-weight: 500;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .tagline {
+        margin: 0.85rem 0 0;
+        color: var(--mute);
+        font-size: 1.125rem;
+      }
+
+      .about {
+        margin: 2rem 0 0;
+        padding: 0;
+        max-width: 32rem;
+      }
+
+      .about p {
+        margin: 0 0 0.85rem;
+        color: var(--ink);
+      }
+
+      .about p:last-child {
+        margin-bottom: 0;
+      }
+
+      nav {
+        margin-top: 2.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--line);
+      }
+
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 1.15rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      a {
+        color: inherit;
+        text-underline-offset: 0.18em;
+        text-decoration-thickness: 1px;
+        text-decoration-color: color-mix(in srgb, var(--ink) 35%, transparent);
+      }
+
+      a:hover {
+        color: var(--focus);
+        text-decoration-color: var(--focus);
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      @media (max-width: 40rem) {
+        main {
+          align-items: flex-start;
+          padding-top: 18vh;
+        }
+
+        nav ul {
+          gap: 0.75rem 1rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <main id="content">
+      <article class="page">
+        <header>
+          <h1>Thomas Juranek</h1>
+          <p class="tagline">Boulder. Building companies.</p>
+        </header>
+        <div class="about">
+          <p>I work on GPU infrastructure at Hydra Host.</p>
+          <p>
+            Krux Lab is the small studio where I build companies and apps.
+          </p>
+          <p>New dad. That’s the whole plot.</p>
+        </div>
+        <nav aria-label="Elsewhere">
+          <ul>
+            <li>
+              <a href="https://x.com/thomasjuranek" rel="me noopener noreferrer">X</a>
+            </li>
+            <li>
+              <a href="https://github.com/tjuranek" rel="me noopener noreferrer">GitHub</a>
+            </li>
+            <li>
+              <a href="https://kruxlab.com" rel="me noopener noreferrer">Krux Lab</a>
+            </li>
+            <li>
+              <a href="mailto:thomas@kruxlab.com">Email</a>
+            </li>
+          </ul>
+        </nav>
+      </article>
+    </main>
+  </body>
+</html>
