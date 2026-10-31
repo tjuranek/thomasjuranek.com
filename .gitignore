@@ -1,4 +1,8 @@
 node_modules
-.next
+.wrangler
+.dev.vars
+.DS_Store
+.env
 .env.local
-/public/rss
+*.log
+.playwright-mcp
