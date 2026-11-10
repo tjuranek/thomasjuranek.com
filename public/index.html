@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thomas Juranek - Software engineer in Boulder, Colorado</title>
+  <meta name="description" content="I'm Thomas, a software engineer in Boulder, Colorado. Founding engineer at Hydra Host, and the person behind Krux Lab.">
+  <meta name="theme-color" content="#0b0a09">
+  <meta property="og:title" content="Thomas Juranek">
+  <meta property="og:description" content="I'm Thomas, a software engineer in Boulder, Colorado. Founding engineer at Hydra Host, and the person behind Krux Lab.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thomasjuranek.com/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a09'/%3E%3Cpath d='M4 23l7-10 4 5 4-8 9 13' fill='none' stroke='%23ff7d45' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0a09;
+      --fg: #f2ede3;
+      --body: #c4beb2;
+      --muted: #8f897c;
+      --rule: rgba(242, 237, 227, 0.12);
+      --accent: #ff7d45;
+      --glow: rgba(255, 125, 69, 0.45);
+      --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+      --ease: cubic-bezier(.2, .7, .1, 1);
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--body);
+      font: 17px/1.6 var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--accent); color: var(--bg); }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* WebGL stage: a contour-line mountain range you fly through */
+    #stage {
+      position: fixed; inset: 0; z-index: 0;
+      background: radial-gradient(70vw 34vh at 50% 46%, rgba(255, 110, 50, 0.3), transparent 70%);
+    }
+    #stage canvas { display: block; width: 100%; height: 100%; opacity: 0; transition: opacity 1.6s ease; }
+    #stage.ready canvas { opacity: 1; }
+    .grain {
+      position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: .07; mix-blend-mode: overlay;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 3;
+      background: var(--accent); box-shadow: 0 0 12px var(--glow);
+      transform: scaleX(0); transform-origin: left;
+    }
+
+    main { position: relative; z-index: 1; width: min(760px, 100% - 40px); margin: 0 auto; }
+    .mono {
+      font: 12px/1.6 var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    h1, h2 { font-family: var(--serif); font-weight: 400; color: var(--fg); letter-spacing: -0.015em; text-wrap: balance; }
+    em { font-family: var(--serif); font-style: italic; color: var(--accent); text-shadow: 0 0 36px var(--glow); }
+
+    header {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 0 30svh;
+      text-shadow: 0 0 24px var(--bg), 0 0 8px var(--bg);
+    }
+    header .mono { display: flex; align-items: center; gap: 10px; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2.2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 var(--glow); } 70%, 100% { box-shadow: 0 0 0 10px transparent; } }
+    h1 { font-size: clamp(42px, 8vw, 80px); line-height: 1.02; margin: 20px 0 24px; }
+    header p:last-of-type { max-width: 50ch; font-size: 19px; color: var(--fg); }
+    .cue {
+      position: absolute; left: 0; bottom: 26px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .cue::after { content: ""; width: 1px; height: 34px; background: linear-gradient(var(--accent), transparent); animation: cue 2s var(--ease) infinite; transform-origin: top; }
+    @keyframes cue { 0% { transform: scaleY(0); } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+    /* headline words resolve out of blur */
+    .js h1 .w {
+      display: inline-block; opacity: 0; filter: blur(10px); transform: translateY(.35em);
+      transition: opacity .9s var(--ease), filter .9s var(--ease), transform 1.1s var(--ease);
+      transition-delay: calc(var(--i) * 55ms + 150ms);
+    }
+    .js .loaded h1 .w { opacity: 1; filter: none; transform: none; }
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    section { padding: clamp(56px, 10vw, 96px) 0; border-top: 1px solid var(--rule); }
+    h2 { font-size: clamp(32px, 5vw, 44px); line-height: 1.1; margin-bottom: 8px; }
+    section > .mono:first-child { color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+    section > .mono:first-child::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+
+    .rows { list-style: none; padding: 0; }
+    .rows li { position: relative; padding: 20px 0; border-bottom: 1px solid var(--rule); }
+    .rows li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .rows li::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent 70%); box-shadow: 0 0 10px var(--glow);
+      transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease);
+    }
+    .rows li:hover::before { transform: scaleX(1); }
+    .rows a { color: var(--fg); font-size: 19px; font-weight: 500; transition: color .2s; }
+    .rows a::after { content: " ↗"; color: var(--muted); display: inline-block; margin-left: .3em; transition: transform .3s var(--ease), color .2s; }
+    .rows li:hover a, .rows li:hover a::after, .links a:hover { color: var(--accent); }
+    .rows li:hover a::after { transform: translate(3px, -3px); }
+    .rows .mono { float: right; margin-top: 6px; }
+    .rows p { max-width: 58ch; font-size: 16px; }
+
+    .about p { max-width: 60ch; }
+    .about p + p { margin-top: 1em; }
+    .about p:first-of-type { color: var(--fg); font-size: clamp(19px, 2.6vw, 22px); line-height: 1.45; }
+
+    .links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 22px; }
+    .links a { transition: color .2s; }
+    .mail {
+      position: relative; display: inline-block; margin-top: 14px; padding-bottom: 5px;
+      font: clamp(17px, 3vw, 24px) var(--mono); color: var(--fg);
+    }
+    .mail::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+      background: var(--accent); box-shadow: 0 0 14px var(--glow);
+      transform: scaleX(.25); transform-origin: left; transition: transform .6s var(--ease);
+    }
+    .mail:hover::after { transform: scaleX(1); }
+    footer { padding: 28px 0 40px; border-top: 1px solid var(--rule); }
+
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .rows .mono { float: none; display: block; margin: 0 0 2px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="stage" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"></div>
+
+  <main>
+    <header>
+      <p class="mono"><span class="dot"></span>Thomas Juranek · Boulder, Colorado</p>
+      <h1>I build infrastructure for AI by day, and <em>products of my own</em> the rest of the time.</h1>
+      <p>I'm Thomas, a software engineer ten years in. I split my time between a GPU infrastructure company and a studio of my own.</p>
+      <p class="cue mono">Scroll</p>
+    </header>
+
+    <section>
+      <p class="mono reveal">Now</p>
+      <h2 class="reveal">What I'm <em>working on.</em></h2>
+      <ul class="rows">
+        <li class="reveal">
+          <span class="mono">By day</span>
+          <a href="https://hydrahost.com">Brokkr at Hydra Host</a>
+          <p>The control plane for AI factories: one API to provision, power-cycle, rescue, and diagnose bare-metal GPU servers across 40+ data centers. I'm a founding engineer on it.</p>
+        </li>
+        <li class="reveal">
+          <span class="mono">Studio</span>
+          <a href="https://kruxlab.com">Krux Lab</a>
+          <p>My one-person software studio. I design, build, and host software for businesses, with a crew of AI agents doing the heavy lifting on tooling I built myself.</p>
+        </li>
+        <li class="reveal">
+          <span class="mono">Venture</span>
+          <a href="https://showcasedlistings.com">Showcased Listings</a>
+          <p>Paste a home listing and get a custom website for that one property in minutes, domain included.</p>
+        </li>
+        <li class="reveal">
+          <span class="mono">Venture</span>
+          <a href="https://kruxlab.com/knitted/">Knitted</a>
+          <p>An iPhone and Android app for trying to conceive, pregnancy, and a baby's first year. What you track stays private.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="about">
+      <p class="mono reveal">About</p>
+      <p class="reveal">I've been building software for ten years, across frontend, backend, and infrastructure, at startups, consultancies, and AWS.</p>
+      <p class="reveal">My route in wasn't traditional. I picked up the basics in high school, went through a bootcamp in Minneapolis, and learned the rest on the job.</p>
+      <p class="reveal">Most of my work now happens alongside AI agents. I run several in parallel on tooling I built, and I review every line before it ships.</p>
+      <p class="reveal">Away from the desk I'm usually in the gym, or in the mountains with skis or golf clubs.</p>
+    </section>
+
+    <section>
+      <p class="mono reveal">Contact</p>
+      <h2 class="reveal">Say <em>hello.</em></h2>
+      <a class="mail reveal" href="mailto:hello@thomasjuranek.com">hello@thomasjuranek.com</a>
+      <p class="links mono reveal">
+        <a href="https://x.com/thomasjuranek">X ↗</a>
+        <a href="https://github.com/tjuranek">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/thomasjuranek/">LinkedIn ↗</a>
+      </p>
+    </section>
+
+    <footer class="mono">© 2026 Thomas Juranek</footer>
+  </main>
+
+  <!-- Page motion: headline words, scroll reveals, progress bar -->
+  <script>
+    (function () {
+      var h1 = document.querySelector('h1'), i = 0;
+      h1.setAttribute('aria-label', h1.textContent);
+      (function split(node) {
+        Array.from(node.childNodes).forEach(function (n) {
+          if (n.nodeType !== 3) return split(n);
+          var frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part.trim()) return frag.appendChild(document.createTextNode(part));
+            var s = document.createElement('span');
+            s.className = 'w'; s.style.setProperty('--i', i++); s.textContent = part;
+            s.setAttribute('aria-hidden', 'true');
+            frag.appendChild(s);
+          });
+          node.replaceChild(frag, n);
+        });
+      })(h1);
+      requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+      var bar = document.querySelector('.progress');
+      addEventListener('scroll', function () {
+        var max = document.documentElement.scrollHeight - innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+      }, { passive: true });
+    })();
+  </script>
+
+  <!--
+    WebGL. A mountain range drawn as glowing contour lines, like a topo map
+    stood on end. You fly up the valley; scrolling lifts the camera until you
+    are looking straight down at the map. Lines brighten near the pointer.
+  -->
+  <script type="module">
+    import * as THREE from 'three';
+
+    const stage = document.getElementById('stage');
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); } catch (e) {}
+
+    if (renderer) {
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      stage.appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 120);
+
+      const NOISE = /* glsl */`
+        vec3 permute(vec3 x) { return mod(((x * 34.0) + 1.0) * x, 289.0); }
+        float snoise(vec2 v) {
+          const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+          vec2 i = floor(v + dot(v, C.yy));
+          vec2 x0 = v - i + dot(i, C.xx);
+          vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+          vec4 x12 = x0.xyxy + C.xxzz;
+          x12.xy -= i1;
+          i = mod(i, 289.0);
+          vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+          vec3 m = max(0.5 - vec3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+          m = m * m; m = m * m;
+          vec3 x = 2.0 * fract(p * C.www) - 1.0;
+          vec3 h = abs(x) - 0.5;
+          vec3 ox = floor(x + 0.5);
+          vec3 a0 = x - ox;
+          m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
+          vec3 g;
+          g.x = a0.x * x0.x + h.x * x0.y;
+          g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+          return 130.0 * dot(m, g);
+        }
+        // ridged fractal noise: sharp crests, soft valleys
+        float ridges(vec2 p) {
+          float sum = 0.0, amp = 0.5;
+          for (int i = 0; i < 4; i++) {
+            float n = 1.0 - abs(snoise(p));
+            sum += n * n * amp;
+            p = p * 1.97 + 17.0;
+            amp *= 0.42;
+          }
+          return sum;
+        }
+      `;
+
+      const uniforms = {
+        uTime: { value: 0 },
+        uLift: { value: 0 },
+        uMouse: { value: new THREE.Vector2(-9999, -9999) },
+        uBg: { value: new THREE.Color('#0b0a09') },
+        uLow: { value: new THREE.Color('#7a3214') },
+        uHigh: { value: new THREE.Color('#ffb38a') },
+        uAccent: { value: new THREE.Color('#ff7d45') },
+      };
+
+      const terrain = new THREE.Mesh(
+        new THREE.PlaneGeometry(90, 70, 300, 240).rotateX(-Math.PI / 2),
+        new THREE.ShaderMaterial({
+          uniforms,
+          vertexShader: NOISE + /* glsl */`
+            uniform float uTime;
+            varying float vH;
+            varying float vDist;
+            void main() {
+              vec3 p = position;
+              // slide the noise toward the camera: the grid stays put, the land moves
+              vec2 q = vec2(p.x, p.z - uTime * 1.1) * 0.07;
+              float valley = smoothstep(1.0, 16.0, abs(p.x + 3.0 * snoise(vec2(q.y * 0.5, 4.0))));
+              float h = ridges(q) * (0.9 + 9.0 * valley);
+              p.y = h;
+              vH = h;
+              vec4 mv = modelViewMatrix * vec4(p, 1.0);
+              vDist = -mv.z;
+              gl_Position = projectionMatrix * mv;
+            }
+          `,
+          fragmentShader: /* glsl */`
+            uniform vec2 uMouse;
+            uniform float uLift;
+            uniform vec3 uBg, uLow, uHigh, uAccent;
+            varying float vH;
+            varying float vDist;
+            float contour(float f, float width) {
+              float w = fwidth(f);
+              float d = abs(fract(f - 0.5) - 0.5) / max(w, 1e-4);
+              // fade lines out where they would crowd into moire
+              return (1.0 - smoothstep(width, width + 1.0, d)) * (1.0 - smoothstep(0.6, 1.3, w));
+            }
+            void main() {
+              float f = vH * 3.4;
+              float minor = contour(f, 0.5);
+              float major = contour(f / 5.0, 1.1);
+              vec3 tint = mix(uLow, uHigh, smoothstep(0.3, 6.5, vH));
+              float near = exp(-pow(distance(gl_FragCoord.xy, uMouse) / 190.0, 2.0));
+              vec3 col = uBg;
+              col += tint * (minor * 0.8 + major * 1.2);
+              col += uAccent * near * (0.05 + minor * 1.2 + major * 1.4);
+              // faint glow on the high ground
+              col += uAccent * 0.05 * smoothstep(3.0, 8.0, vH);
+              float fog = smoothstep(mix(9.0, 16.0, uLift), mix(46.0, 60.0, uLift), vDist);
+              gl_FragColor = vec4(mix(col, uBg, fog), 1.0);
+            }
+          `,
+        })
+      );
+      terrain.position.z = -30;
+      scene.add(terrain);
+
+      // embers drifting up out of the valley
+      const N = 420, pos = new Float32Array(N * 3), seed = new Float32Array(N);
+      for (let i = 0; i < N; i++) {
+        pos[i * 3] = (Math.random() - 0.5) * 50;
+        pos[i * 3 + 1] = Math.random() * 14;
+        pos[i * 3 + 2] = -Math.random() * 50;
+        seed[i] = Math.random();
+      }
+      const emberGeo = new THREE.BufferGeometry();
+      emberGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      emberGeo.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+      const embers = new THREE.Points(emberGeo, new THREE.ShaderMaterial({
+        uniforms,
+        transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+        vertexShader: /* glsl */`
+          uniform float uTime;
+          attribute float aSeed;
+          varying float vA;
+          void main() {
+            vec3 p = position;
+            float t = uTime * (0.25 + aSeed * 0.5);
+            p.y = mod(p.y + t, 14.0);
+            p.x += sin(t * 1.7 + aSeed * 40.0) * 0.6;
+            p.z = -mod(-p.z - uTime * 1.1, 50.0);
+            vec4 mv = modelViewMatrix * vec4(p, 1.0);
+            vA = (0.35 + 0.65 * sin(uTime * 2.0 + aSeed * 60.0) * 0.5 + 0.5) * smoothstep(50.0, 20.0, -mv.z) * smoothstep(0.5, 3.0, -mv.z);
+            gl_PointSize = (10.0 + aSeed * 26.0) / -mv.z;
+            gl_Position = projectionMatrix * mv;
+          }
+        `,
+        fragmentShader: /* glsl */`
+          uniform vec3 uAccent;
+          varying float vA;
+          void main() {
+            float d = length(gl_PointCoord - 0.5);
+            gl_FragColor = vec4(uAccent * 1.4, smoothstep(0.5, 0.0, d) * vA * 0.5);
+          }
+        `,
+      }));
+      scene.add(embers);
+
+      // state
+      const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+      let lift = 0, liftTarget = 0;
+      const look = new THREE.Vector3();
+
+      function resize() {
+        renderer.setSize(innerWidth, innerHeight, false);
+        camera.aspect = innerWidth / innerHeight;
+        camera.fov = camera.aspect < 0.8 ? 72 : 55;
+        camera.updateProjectionMatrix();
+      }
+      function onScroll() { liftTarget = Math.min(scrollY / (innerHeight * 0.9), 1); }
+      addEventListener('resize', resize);
+      addEventListener('scroll', onScroll, { passive: true });
+      addEventListener('pointermove', (e) => {
+        mouse.tx = e.clientX / innerWidth - 0.5;
+        mouse.ty = e.clientY / innerHeight - 0.5;
+        const dpr = renderer.getPixelRatio();
+        uniforms.uMouse.value.set(e.clientX * dpr, (innerHeight - e.clientY) * dpr);
+      });
+      resize(); onScroll();
+      if (still) lift = liftTarget;
+
+      const clock = new THREE.Clock();
+      function frame() {
+        uniforms.uTime.value = still ? 12 : clock.getElapsedTime() + 12;
+        lift += (liftTarget - lift) * (still ? 1 : 0.06);
+        mouse.x += (mouse.tx - mouse.x) * 0.05;
+        mouse.y += (mouse.ty - mouse.y) * 0.05;
+        const e = lift * lift * (3 - 2 * lift);
+        uniforms.uLift.value = e;
+
+        // fly low up the valley, then rise until the range reads as a map
+        camera.position.set(mouse.x * 2.2, 2.3 + e * 24 - mouse.y * 0.8, 2 - e * 14);
+        look.set(mouse.x * 5, 2.6 - e * 2.6, -24 + e * 3);
+        camera.lookAt(look);
+        camera.rotation.z += mouse.x * -0.04;
+
+        stage.style.opacity = 1 - e * 0.55;
+        renderer.render(scene, camera);
+        if (!still) requestAnimationFrame(frame);
+      }
+      frame();
+      if (still) { addEventListener('scroll', () => requestAnimationFrame(frame), { passive: true }); addEventListener('resize', frame); }
+      stage.classList.add('ready');
+    }
+  </script>
+</body>
+</html>

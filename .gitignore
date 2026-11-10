@@ -1,4 +1,4 @@
 node_modules
-.next
-.env.local
-/public/rss
+.wrangler
+.DS_Store
+.env
