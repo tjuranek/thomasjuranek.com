@@ -2,8 +2,6 @@
 
 One file: `public/index.html`. No build step.
 
-Deploy to Cloudflare (needs `wrangler login` or `CLOUDFLARE_API_TOKEN`):
-
-```bash
-npx wrangler deploy
-```
+Hosted on Cloudflare Pages (project `thomasjuranek`). Pushing to `master` deploys
+it via `.github/workflows/deploy.yml`, which needs a `CLOUDFLARE_API_TOKEN` repo
+secret with Cloudflare Pages: Edit.
