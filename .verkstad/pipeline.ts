@@ -3,7 +3,7 @@ export default {
 	steps: [
 		{
 			name: "deploy",
-			run: "bunx wrangler@4 pages deploy public --project-name=thomasjuranek --branch=master",
+			run: "WRANGLER_LOG=debug bunx wrangler@4 pages deploy public --project-name=thomasjuranek --branch=master",
 		},
 	],
 };
