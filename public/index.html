@@ -10,7 +10,7 @@
   <meta property="og:description" content="I'm Thomas, a software engineer in Boulder, Colorado. Founding engineer at Hydra Host, and the person behind Krux Lab.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thomasjuranek.com/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a09'/%3E%3Cpath d='M4 23l7-10 4 5 4-8 9 13' fill='none' stroke='%23ff7d45' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0a09'/%3E%3Cpath d='M4 23l7-10 4 5 4-8 9 13' fill='none' stroke='%2327ba64' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -27,8 +27,8 @@
       --body: #c4beb2;
       --muted: #8f897c;
       --rule: rgba(242, 237, 227, 0.12);
-      --accent: #ff7d45;
-      --glow: rgba(255, 125, 69, 0.45);
+      --accent: #27ba64;
+      --glow: rgba(39, 186, 100, 0.45);
       --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
       --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
@@ -50,7 +50,7 @@
     /* WebGL stage: a contour-line mountain range you fly through */
     #stage {
       position: fixed; inset: 0; z-index: 0;
-      background: radial-gradient(70vw 34vh at 50% 46%, rgba(255, 110, 50, 0.3), transparent 70%);
+      background: radial-gradient(70vw 34vh at 50% 46%, rgba(38, 177, 96, 0.3), transparent 70%);
     }
     #stage canvas { display: block; width: 100%; height: 100%; opacity: 0; transition: opacity 1.6s ease; }
     #stage.ready canvas { opacity: 1; }
@@ -297,9 +297,9 @@
         uLift: { value: 0 },
         uMouse: { value: new THREE.Vector2(-9999, -9999) },
         uBg: { value: new THREE.Color('#0b0a09') },
-        uLow: { value: new THREE.Color('#7a3214') },
-        uHigh: { value: new THREE.Color('#ffb38a') },
-        uAccent: { value: new THREE.Color('#ff7d45') },
+        uLow: { value: new THREE.Color('#12532d') },
+        uHigh: { value: new THREE.Color('#5adc90') },
+        uAccent: { value: new THREE.Color('#27ba64') },
       };
 
       const terrain = new THREE.Mesh(
